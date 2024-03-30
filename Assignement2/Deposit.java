@@ -1,5 +1,5 @@
+package Assignment2;
 import java.util.Scanner;
-
 public class Deposit {
    long Principal;
    int time;
@@ -7,9 +7,9 @@ public class Deposit {
   int  Totamt;
     Deposit()
     {
-        this.Principal = 4500;
-        this.time = 2;
-        this.rate = 9.45;
+        Principal = 4500;
+          time = 2;
+         rate = 9.45;
         calcAmt();
      
     }
