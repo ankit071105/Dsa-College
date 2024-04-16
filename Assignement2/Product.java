@@ -14,7 +14,7 @@ public class Product {
    }
    public void display() {
     System.out.println("Product ID: " + proID);
-    System.out.println("Price per unit: $" + price);
+    System.out.println("Price per unit: ₹" + price);
     System.out.println("Quantity: " + quantity);
 }
 public static void main(String[] args) {

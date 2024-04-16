@@ -45,9 +45,9 @@ class CircleType extends PointType {
 public class Point {
     public static void main(String[] args) {
 
-        PointType obj = new PointType(3, 4);
+        PointType obj = new PointType(34, 43);
         obj.printCoordinates();
-        CircleType obj1 = new CircleType(0, 0, 5);
+        CircleType obj1 = new CircleType(0, 0, 7.5);
         obj1.printCoordinates();
         obj1.printRadius();
         obj1.printArea();
