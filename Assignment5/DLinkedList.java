@@ -1,40 +1,26 @@
 package Assignment5;
 import java.util.Scanner;
-
 class Node {
-    protected int regd_no;
-    protected float mark;
-    protected Node next;
-    protected Node prev;
-
-    // Constructor
-    public Node(int regd_no, float mark) {
-        this.regd_no = regd_no;
-        this.mark = mark;
-        this.next = null;
-        this.prev = null;
-    }
+     int regd_no;
+     float mark;
+     Node next;
+     Node prev;
 }
-
 public class DLinkedList {
     public static Node create(Node start, Node end) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter registration number: ");
-        int regd_no = sc.nextInt();
-        System.out.print("Enter mark: ");
-        float mark = sc.nextFloat();
-        Node newNode = new Node(regd_no, mark);
+        int regd_no =213;
+        float mark = (float) 23.4521;
+        Node obj = new Node();
         if (start == null) {
-            start = newNode;
-            end = newNode;
+            start = obj;
+            end = obj;
         } else {
-            end.next = newNode;
-            newNode.prev = end;
-            end = newNode;
+            end.next = obj;
+            obj.prev = end;
+            end = obj;
         }
         return end;
     }
-
     public static void display(Node start, Node end) {
         if (start == null) {
             System.out.println("List is empty");
@@ -46,14 +32,10 @@ public class DLinkedList {
             current = current.next;
         }
     }
-
     public static Node insBeg(Node start, Node end) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter registration number: ");
-        int regd_no = sc.nextInt();
-        System.out.print("Enter mark: ");
-        float mark = sc.nextFloat();
-        Node newNode = new Node(regd_no, mark);
+        int regd_no = 231;
+        float mark = (float) 34.521451;
+        Node newNode = new Node();
         if (start == null) {
             start = newNode;
             end = newNode;
@@ -64,15 +46,11 @@ public class DLinkedList {
         }
         return end;
     }
-
     public static Node insEnd(Node start, Node end) {
         return create(start, end);
     }
-
     public static Node insAny(Node start, Node end) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter position: ");
-        int pos = sc.nextInt();
+        int pos = 3;
         if (pos < 1) {
             System.out.println("Invalid position");
             return end;
@@ -80,33 +58,29 @@ public class DLinkedList {
         if (pos == 1) {
             return insBeg(start, end);
         }
-        Node newNode = new Node(0, 0);
-        System.out.print("Enter registration number: ");
-        int regd_no = sc.nextInt();
-        System.out.print("Enter mark: ");
-        float mark = sc.nextFloat();
-        newNode.regd_no = regd_no;
-        newNode.mark = mark;
+        Node obj1 = new Node();
+        int regd_no = 431;
+        float mark = (float) 34.23;
+        obj1.regd_no = regd_no;
+        obj1.mark = mark;
         Node current = start;
         for (int i = 1; i < pos - 1 && current != null; i++) {
             current = current.next;
         }
         if (current == null) {
-            System.out.println("Invalid position");
+       
             return end;
         }
-        newNode.next = current.next;
+        obj1.next = current.next;
         if (current.next != null) {
-            current.next.prev = newNode;
+            current.next.prev = obj1;
         }
-        newNode.prev = current;
-        current.next = newNode;
+        obj1.prev = current;
+        current.next = obj1;
         return end;
     }
-
     public static Node delBeg(Node start, Node end) {
         if (start == null) {
-            System.out.println("List is empty");
             return end;
         }
         if (start.next == null) {
@@ -115,134 +89,112 @@ public class DLinkedList {
         start.next.prev = null;
         return start.next;
     }
-
     public static Node delEnd(Node start, Node end) {
         if (start == null) {
-            System.out.println("List is empty");
             return end;
         }
         if (start.next == null) {
             return null;
         }
-        Node newEnd = end.prev;
-        newEnd.next = null;
-        return newEnd;
+        Node obj2 = end.prev;
+        obj2.next = null;
+        return obj2;
     }
-
     public static Node delAny(Node start, Node end) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter position: ");
-        int pos = sc.nextInt();
+        Scanner sc = new Scanner(System.in); 
+        int pos = 6;
         if (pos < 1) {
-            System.out.println("Invalid position");
             return end;
         }
         if (pos == 1) {
             return delBeg(start, end);
         }
-        Node current = start;
-        for (int i = 1; i < pos && current != null; i++) {
-            current = current.next;
+        Node c = start;
+        for (int i = 1; i < pos && c != null; i++) {
+            c = c.next;
         }
-        if (current == null) {
-            System.out.println("Invalid position");
+        if (c == null) {
             return end;
         }
-        if (current.next != null) {
-            current.next.prev = current.prev;
+        if (c.next != null) {
+            c.next.prev = c.prev;
         }
-        current.prev.next = current.next;
+        c.prev.next = c.next;
         return end;
     }
-
     public static void searchAndUpdate(Node start, int regd_no, float newMark) {
-        Node current = start;
+        Node c = start;
         boolean found = false;
-        while (current != null) {
-            if (current.regd_no == regd_no) {
-                current.mark = newMark;
+        while (c != null) {
+            if (c.regd_no == regd_no) {
+                c.mark = newMark;
                 found = true;
                 break;
             }
-            current = current.next;
+            c = c.next;
         }
         if (!found) {
-            System.out.println("Student with registration number " + regd_no + " not found");
+            System.out.println("" + regd_no + " not found");
         }
     }
-
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Node start = null;
+        Node s = null;
         Node end = null;
         while (true) {
-            System.out.println("****MENU*****");
-            System.out.println("0: Exit");
-            System.out.println("1: Creation");
-            System.out.println("2: Display");
-            System.out.println("3: Insertion at Beginning");
-            System.out.println("4: Insertion at End");
-            System.out.println("5: Insertion at Any Position");
-            System.out.println("6: Deletion from Beginning");
-            System.out.println("7: Deletion from End");
-            System.out.println("8: Deletion from Any Position");
-            System.out.println("9: Search and Update Mark");
-            System.out.println("Enter your choice");
             int choice = sc.nextInt();
             switch (choice) {
                 case 0:
                     System.exit(0);
                 case 1:
-                    end = create(start, end);
-                    if (start == null) {
-                        start = end;
+                    end = create(s, end);
+                    if (s == null) {
+                        s = end;
                     }
                     break;
                 case 2:
-                    display(start, end);
+                    display(s, end);
                     break;
                 case 3:
-                    end = insBeg(start, end);
-                    if (start == null) {
-                        start = end;
+                    end = insBeg(s, end);
+                    if (s == null) {
+                        s = end;
                     }
                     break;
                 case 4:
-                    end = insEnd(start, end);
-                    if (start == null) {
-                        start = end;
+                    end = insEnd(s, end);
+                    if (s == null) {
+                        s = end;
                     }
                     break;
                 case 5:
-                    end = insAny(start, end);
-                    if (start == null) {
-                        start = end;
+                    end = insAny(s, end);
+                    if (s == null) {
+                        s = end;
                     }
                     break;
                 case 6:
-                    end = delBeg(start, end);
-                    if (start == null) {
+                    end = delBeg(s, end);
+                    if (s == null) {
                         end = null;
                     }
                     break;
                 case 7:
-                    end = delEnd(start, end);
-                    if (start == null) {
+                    end = delEnd(s, end);
+                    if (s == null) {
                         end = null;
                     }
                     break;
                 case 8:
-                    end = delAny(start, end);
-                    if (start == null) {
+                    end = delAny(s, end);
+                    if (s == null) {
                         end = null;
                     }
                     break;
-                case 9:
-                    System.out.print("Enter registration number to search: ");
-                    int regd_no = sc.nextInt();
-                    System.out.print("Enter new mark: ");
-                    float newMark = sc.nextFloat();
-                    searchAndUpdate(start, regd_no, newMark);
+                    case 9:
+                    int regd_no = 43;
+                    float newMark = (float) 56.892;
+                    searchAndUpdate(s, regd_no, newMark);
                     break;
                 default:
                     System.out.println("Wrong choice");
